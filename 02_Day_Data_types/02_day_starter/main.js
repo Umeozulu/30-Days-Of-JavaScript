@@ -152,7 +152,67 @@ console.log(`11. Use console and escape characters to print pattern\n
 5\t1\t5\t25\t125`)
 
 // 12. Use substr to slice out the phrase because because because from the following sentence:'You cannot end a sentence with because because because is a conjunction'
-let becauseStr2 = `You cannot end a sentence with because because because is a conjunction`
-let firstIndex = becauseStr2.indexOf(`because`)
+// let becauseStr2 = `You cannot end a sentence with because because because is a conjunction`
+let firstIndex = becauseStr.indexOf(`because`)
 let lengthOfStr = `because`.length * 3 + 2
-console.log(`12. Slice out multiple 'because' from string: ${becauseStr2.substr(firstIndex, lengthOfStr)}`)
+console.log(`12. Slice out multiple 'because' from string: ${becauseStr.substr(firstIndex, lengthOfStr)}`)
+
+
+
+// Exercise: Level 3
+console.log(`\n\nExercise 3`)
+
+// 1. 'Love is the best thing in this world. Some found their love and some are still looking for their love.' Count the number of word love in this sentence.
+let loveStr = `Love is the best thing in this world. Some found their love and some are still looking for their love.`
+let loveCount = loveStr.match(/love/gi).length
+console.log(`1. Find the number of word love in string:\nThe word 'love' appeared ${loveCount} times in "${loveStr}"`)
+
+// 2. Use match() to count the number of all because in the following sentence:'You cannot end a sentence with because because because is a conjunction'
+// becauseStr
+let becauseCount = becauseStr.match(/because/gi).length
+console.log(`2. Find the number of word 'because' in string:\nThe word 'because' appeared ${becauseCount} times in "${becauseStr}"`)
+
+// 3. Clean the following text and find the most frequent word (hint, use replace and regular expressions).
+let sentence = `%I $am@% a %tea@cher%, &and& I lo%#ve %te@a@ching%;. The@re $is no@th@ing; &as& mo@re rewarding as educa@ting &and& @emp%o@weri@ng peo@ple. ;I found tea@ching m%o@re interesting tha@n any ot#her %jo@bs. %Do@es thi%s mo@tiv#ate yo@u to be a tea@cher!? %Th#is 30#Days&OfJavaScript &is al@so $the $resu@lt of &love& of tea&ching`
+let cleanSentence = sentence.replace(/%|\$|@|&|#|;|,|\.|!|\?/gi, ``)
+let cleanSentencearr = cleanSentence.split(` `)
+// cleanSentencearr.sort()
+console.log(`3. Original Sentence:\n${sentence}
+Cleaned Sentence:\n${cleanSentence}`)
+// console.log(cleanSentencearr)
+
+/*
+const frequency = {}
+for (let i = 0; i < cleanSentencearr.length; i++) {
+    const element = cleanSentencearr[i];
+    // If the element is already present in the frequency Object, increment its count by 1
+    if (frequency[element]) {
+        frequency[element]++;
+    } else {
+        // Otherwise, initialise its count to 1
+        frequency[element] = 1;
+    }
+}
+
+let maxCount = 0
+let mostOccuringElement
+
+for (const key in frequency) {
+    if (frequency[key] > maxCount) {
+        maxCount = frequency[key];
+        mostOccuringElement = key
+    }
+}
+console.log(frequency)
+console.log(mostOccuringElement)
+*/
+
+// 4. Calculate the total annual income of the person by extracting the numbers from the following text. 'He earns 5000 euro from salary per month, 10000 euro annual bonus, 15000 euro online courses per month.'
+let incometxt = `He earns 5000 euro from salary per month, 10000 euro annual bonus, 15000 euro online courses per month.`
+let searchIncometxt = /\d+/g
+let incomeArr = incometxt.match(searchIncometxt)
+let sum = 0
+for (let i = 0; i < incomeArr.length; i++) {
+    sum += parseInt(incomeArr[i]); 
+}
+console.log(`4. The sum of his income is: ${sum} euro`)
